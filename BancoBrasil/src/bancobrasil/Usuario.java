@@ -1,14 +1,9 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package bancobrasil;
 
 import java.util.Date;
 
 /**
- *
- * @author programador
+ * @author Kevyn Granja Lima
  */
 public class Usuario {
     //Atributos
