@@ -58,7 +58,7 @@ public class BancoBrasil {
         
          System.out.println(contaBancaria1.agencia+"\n"
         + contaBancaria1.conta + "\n"
-        + contaBancaria1.proprietario.imprimirInfo() + "\n"
+        + contaBancaria1.proprietario.imprimirInfo()+ "\n"
         + contaBancaria1.consultarSaldo());
          
         System.out.println("\n\n Digite o valor para saque -> ");
