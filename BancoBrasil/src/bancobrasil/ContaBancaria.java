@@ -6,10 +6,10 @@ package bancobrasil;
  */
 public class ContaBancaria {
     //Atributos(caracteristicas) da classe
-    private String agencia;
-    private String conta;
-    private double saldo;
-    private Usuario proprietario;
+    public String agencia;
+    public String conta;
+    public double saldo;
+    public Usuario proprietario;
     
     //Metodos (comportamentos) da classe
     void depositar(double valor){  //Método com parâmetro
