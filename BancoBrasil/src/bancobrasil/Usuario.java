@@ -1,6 +1,5 @@
 package bancobrasil;
 
-import java.util.Date;
 
 /**
  * @author Kevyn Granja Lima
@@ -10,12 +9,12 @@ public class Usuario {
    private String nome;
    private String sobrenome;
    private String telefone;
-   private Date dataRegistro = new Date();
+   
     
     //Métodos
-    String imprimirInfo(){
-        return String.format("Seu nome é: %s\n Sobrenome: %s\n Telefone: %s\n Data de registro: %s",
-                            this.nome,this.sobrenome,this.telefone,this.dataRegistro);
+    public String imprimirInfo(){
+        return String.format("INFORMAÇÕES DO CLIENTE: Seu nome é: %s\n Sobrenome: %s\n Telefone: %s\n",
+                            this.nome,this.sobrenome,this.telefone);
     }
     // Metodo Construtor Padrão
     public Usuario(){}
@@ -35,9 +34,7 @@ public class Usuario {
      public String getTelefone(){
         return this.telefone;
     }
-     public Date getDataRegistro(){
-        return this.dataRegistro;
-    }
+
      //Metodos Encapsulamento SET
      public void setNome(String nome){
          this.nome = nome;
@@ -48,7 +45,6 @@ public class Usuario {
     public void setTelefone(String telefone){
          this.telefone = telefone;
      }
-    public void setDataRegistro(Date dataRegistro){
-         this.dataRegistro = dataRegistro;
-     }
+    
+
 }

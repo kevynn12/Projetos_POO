@@ -1,6 +1,7 @@
 
 package bancobrasil;
 
+import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.Scanner;
 
@@ -73,19 +74,39 @@ public class BancoBrasil {
         //FORMA MELHORADA DE INTERFACE
         Scanner scan = new Scanner(System.in);
         //Variável global de opção
+        int quantidadeCadastro=0;
         int opcao = 0;
-        boolean existe = false;
+        boolean isLogin = false;
+
         //Objetos
+        ArrayList<Usuario> users = new ArrayList();
+        ArrayList<Gerente> gerentes = new ArrayList();
         Usuario user;
-        Usuario[] users = new Usuario[5];
         ContaBancaria contaBancaria = new ContaBancaria();
-        
-        
+        GerenteRepository db_gerente = new GerenteRepository();
+        gerentes = db_gerente.addGerente();
+        //Tela de Login
+       do{
+            System.out.println("***SEJA BEM-VINDO AO BANCO BRASIL***");
+            System.out.println("LOGIN: ");
+            String login = scan.next();
+            System.out.println("PASSWORD: ");
+            String password = scan.next();
+
+            for(Gerente g : gerentes){
+                if(g.getLogin().equals(login) && g.getPassword().equals(password)){
+                    isLogin = true;
+                }
+            }
+            //String notValidate = "",validate = "Login ou senha incorretos!";
+            System.out.printf("%s\n", isLogin==true? "" : "Login ou senha incorretos!");
+        }while (isLogin != true); 
         
         while(opcao != 3){
         //1º Tela
             System.out.println("***BANCO BRASIL***");
             System.out.println("1- Cadastro de Cliente");
+            
             System.out.println("2- Cadastro de Conta");
             System.out.println("3- Sair");
             System.out.println("Escolha uma opção: ");
@@ -93,9 +114,13 @@ public class BancoBrasil {
         
             switch(opcao){
                 case 1:
-                    for(int i=0; i<5 ; i++){
+                    System.out.println("***CADASTRO DE CLIENTE***");
+                    System.out.println("Quantidade de Cadastros: ");
+                    
+                     quantidadeCadastro = scan.nextInt();
+                    for(int i=0; i< quantidadeCadastro ; i++){
                         user = new Usuario();
-                        System.out.println("***CADASTRO DE CLIENTE***");
+                        
                         System.out.println("Informe o Nome: ");                       
                         user.setNome(scan.next());
                         System.out.println("Informe o Sobrenome: ");
@@ -103,7 +128,7 @@ public class BancoBrasil {
                         System.out.println("Informe o Telefone: ");
                         user.setTelefone(scan.next());
                         
-                        users[i] = user;
+                        users.add(user);
                     }
                     break;
                 case 2:
@@ -113,27 +138,21 @@ public class BancoBrasil {
                     System.out.println("Informe a Conta: ");
                     contaBancaria.setConta(scan.next());
                     System.out.println("CLIENTES CADASTRADOS");
-                    
-                    for(int i = 0; i<5 ; i++){
-                        System.out.printf("%d- %s %s",i,users[i].getNome(),users[i].getSobrenome());
-                    }
+                    //Sera Listado os clientes cadastrados
+                    if(users.size() !=0){
+                        for(int i = 0; i< quantidadeCadastro ; i++){
+                            System.out.printf("%d- %s %s\n",i+1,users.get(i).getNome(),users.get(i).getSobrenome());
+                        }
                     
                     System.out.println("Selecione o cliente: ");
-                    
                     int userOpcao = scan.nextInt();
-                            
-                    for(int i=0; i<users.length; i++){
-                        if(userOpcao-1 == i){
-                            contaBancaria.setProprietario(users[userOpcao-1]);
-                            existe = true;
-                        }
-                    }
-                    if(existe==false){
-                        System.out.println("O cliente informado não existe!");
+                    contaBancaria.setProprietario(users.get(userOpcao - 1));
+                    }else{
+                        System.out.println("Nenhum cliente cadastrado!");  
                         break;
                     }
-                    System.out.println("Insira um Saldo Inicial: ");
-                    contaBancaria.setSaldo(scan.nextDouble());
+                    
+
                     break;                                  
                 case 3:
                     System.out.println("***ATÉ BREVE!***");
