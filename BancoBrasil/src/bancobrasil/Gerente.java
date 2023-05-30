@@ -13,7 +13,9 @@ public class Gerente extends Usuario{
     public Gerente(){}
 
     public Gerente(String login, String password, String nome, String sobrenome, String telefone) {
-        super(nome, sobrenome, telefone);
+        this.setNome(nome);
+        this.setSobrenome(sobrenome);
+        this.setTelefone(telefone);
         this.login = login;
         this.password = password;
     }
@@ -33,6 +35,12 @@ public class Gerente extends Usuario{
     public void setPassword(String password) {
         this.password = password;
     }
-    
+    @Override
+    public String imprimirInfo(){
+       return String.format("INFORMAÇÕES DO GERENTE\n"
+               + "Nome: %s %s\n"
+               + "Contato: %s\n"
+               + "Login: %s", this.getNome(),this.getSobrenome(),this.getTelefone(),this.getLogin());
+    }
    
 }

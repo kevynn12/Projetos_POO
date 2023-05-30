@@ -14,7 +14,9 @@ public class Cliente extends Usuario{
     public Cliente(){}
 
     public Cliente(String nome, String sobrenome, String telefone) {
-        super(nome, sobrenome, telefone);
+        this.setNome(nome);
+        this.setSobrenome(sobrenome);
+        this.setTelefone(telefone);
     }
     
 

@@ -14,7 +14,7 @@ public class GerenteRepository {
     
     
     //Métodos 
-    public ArrayList<Gerente> addGerente(){
+        public ArrayList<Gerente> addGerente(){
         gerente.add(new Gerente("davis","12345","Davi","Saldanha",""));
         gerente.add(new Gerente("teste","teste","","",""));
         
